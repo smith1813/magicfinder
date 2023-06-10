@@ -7,7 +7,7 @@ export default function Profile() {
         src="https://users.dcc.uchile.cl/~fsmith/assets/img/user2.png"
         alt="El potos"
       />
-      <caption>Wena shushetumare toy en internet</caption>
+      <caption>Poto :3</caption>
 
         </React.Fragment>
     );
