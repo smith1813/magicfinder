@@ -2,13 +2,9 @@ import React from "react";
 
 export default function Profile() {
     return (
-        <React.Fragment>
       <img
-        src="https://users.dcc.uchile.cl/~fsmith/assets/img/user2.png"
-        alt="El potos"
+        src="https://i.imgur.com/QIrZWGIs.jpg"
+        alt="Alan L. Hart"
       />
-      <caption>Poto :3</caption>
-
-        </React.Fragment>
     );
   }
