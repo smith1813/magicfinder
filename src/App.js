@@ -33,7 +33,7 @@ export default function App() {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit}>
-          <input name="search_queue" placeholder="Holi" />
+          <input name="search_queue" placeholder="Search card name" />
          <button type="submit">Submit</button>
         </form>
       <SearchPage cardList={cardList}/>
