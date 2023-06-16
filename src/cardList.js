@@ -29,8 +29,8 @@ function Card({cardInfo}){
     }
     let i = 0;
     return(
-        <div name="card-container" className="p-2 m-5 border-black rounded-3xl border-2">
-            <div className="m-5 content-center" name="card_details" key={"cd_"+cardInfo.id}>
+        <div name="card-container" className="p-2 m-5 border-black rounded-3xl border-2 shadow-lg shadow-black">
+            <div name="card_details" className="m-5 content-center"  key={"cd_"+cardInfo.id}>
                 <h3 className="text-center">{cardInfo.name}</h3>
                 <div name="card_images" className="flex justify-center">
                     { cardImages.map( ci => <img key={"card_face_"+ i++} src={ci} alt={cardInfo.name}/>)}
