@@ -37,6 +37,7 @@ function Card({cardInfo}){
         <div className="card_details" key={"cd_"+cardInfo.id}>
             <h1>{cardInfo.name}</h1>
             { cardImages.map( ci => <img key={"card_face_"+ i++} src={ci} alt={cardInfo.name}/>)}
+            <div className="card_price"><p>{"USD$"+cardInfo.prices.usd}</p></div>
         </div>
     );
 }
