@@ -4,12 +4,12 @@ import React from "react";
 export function CardList({cardList}){
 
     return(
-        <div className="cardList">
-            <ol>
+        <div name="card-list-container" className="flex">
+            <ol className="self-center">
                 {cardList.map( c => 
                     <div key={"cl" + c.id}>
                         <li key={'li'+c.id} >
-                        <Card cardInfo={c} />
+                        <Card classname="card" cardInfo={c} />
                         </li>
                     </div>
                 )}
@@ -34,10 +34,14 @@ function Card({cardInfo}){
     }
     let i = 0;
     return(
-        <div className="card_details" key={"cd_"+cardInfo.id}>
-            <h1>{cardInfo.name}</h1>
-            { cardImages.map( ci => <img key={"card_face_"+ i++} src={ci} alt={cardInfo.name}/>)}
-            <div className="card_price"><p>{"USD$"+cardInfo.prices.usd}</p></div>
+        <div name="card-container" className="p-2 m-5 border-black rounded-3xl border-2">
+            <div className="m-5 content-center" name="card_details" key={"cd_"+cardInfo.id}>
+                <h3 className="text-center">{cardInfo.name}</h3>
+                <div name="card_images" className="flex justify-center">
+                    { cardImages.map( ci => <img key={"card_face_"+ i++} src={ci} alt={cardInfo.name}/>)}
+                </div>
+                <div name="card-price" className="text-center"><p>{"USD$"+cardInfo.prices.usd}</p></div>
+            </div>
         </div>
     );
 }
