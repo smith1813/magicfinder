@@ -15,9 +15,9 @@ export default function App() {
       let q= e;
       //cada vez que se renderea la pagina se fetchea de nuevo
       //como saco esto de la pagina?
+//      fetch(encodeURI('https://api.scryfall.com/cards/search?q='+q))
       fetch(encodeURI('https://api.scryfall.com/cards/search?q='+q))
-        .then( res =>  {
-          console.log(res);
+          .then( res =>  {
           return res.json()})
           .then(j => 
             handleCardList(j.data))
@@ -27,13 +27,14 @@ export default function App() {
     function handleSubmit(e){
       e.preventDefault();
       const searchQueue = e.target.search_queue.value;
+      setSearchState(searchQueue)
       fetchAPI(searchQueue);
     }
 
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit}>
-          <input name="search_queue" placeholder="Search card name" />
+          <input name="search_queue" placeholder={searchState ? setSearchState : "Search card name"} />
          <button type="submit">Submit</button>
         </form>
       <SearchPage cardList={cardList}/>
