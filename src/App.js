@@ -5,7 +5,7 @@ import SearchPage from "./searchPage"
 export default function App() {
 
   const [cardList, setCardList] = useState(null);
-  const [searchPlaceholder, setSearchPlaceholder] = useState("");
+  const [searchPlaceholder, setSearchPlaceholder] = useState("search card's name");
 
 
     function handleCardList(e){
@@ -42,7 +42,7 @@ export default function App() {
           </form>
           
         </div>
-        <div name="search-result" className="flex justify-center">
+        <div name="search-result" className="flex px-5 m-5 justify-center ">
           <SearchPage cardList={cardList}/>
         </div>
       </div>

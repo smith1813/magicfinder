@@ -2,18 +2,13 @@ import React from "react";
 
 
 export function CardList({cardList}){
-
     return(
-        <div name="card-list-container" className="flex">
-            <ol className="self-center">
+        <div name="card-list-container" className="flex flex-wrap justify-center">
                 {cardList.map( c => 
                     <div key={"cl" + c.id}>
-                        <li key={'li'+c.id} >
-                        <Card classname="card" cardInfo={c} />
-                        </li>
+                        <Card key={'li'+c.id} className=""  cardInfo={c} />
                     </div>
                 )}
-            </ol>
         </div>
     );
 }
