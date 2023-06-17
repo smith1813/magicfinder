@@ -45,7 +45,7 @@ function Card({cardInfo}){
                 <div name="card_images" className="flex justify-center">
                     { cardImages.map( ci => <img key={"card_face_"+ i++} src={ci} alt={cardInfo.name}/>)}
                 </div>
-                <div name="card-price" className="text-center"><p>{"USD$"+cardInfo.prices.usd}</p></div>
+                <div name="card-price" className="text-center"><p>{cardInfo.prices.usd ? "USD$"+cardInfo.prices.usd : "N/A"}</p></div>
             </div>
         </div>
     );
