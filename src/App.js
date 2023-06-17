@@ -52,7 +52,6 @@ export default function App() {
       setCardList(orderedCardList);
     }
 
-  console.log(sortSelectValue);
   return (
     <React.Fragment>
       <div name="all-container" className='bg-slate-400 h-20'>
