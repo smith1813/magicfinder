@@ -1,4 +1,7 @@
 import React from "react";
+import { parseManaCost } from "./utils";
+import { ReactSVG } from "react";
+
 
 
 export function CardList({cardList}){
@@ -12,6 +15,7 @@ export function CardList({cardList}){
         </div>
     );
 }
+
 
 function Card({cardInfo}){
 
@@ -36,12 +40,19 @@ function Card({cardInfo}){
     
     } else {
         cardImages.push(cardInfo.image_uris.small);
-    }    
+    }
+
+    const manaCostURIs = parseManaCost(cardInfo);
+    //console.log(manaCostURIs)
     let i = 0;
     return(
         <div name="card-container" className="transform transition duration-500 hover:scale-110 p-2 m-5 bg-white border-black rounded-3xl border-2 shadow-lg shadow-black">
-            <div name="card_details" className="m-5 content-center"  key={"cd_"+cardInfo.id}>
-                <h3 className="text-center">{cardInfo.name}</h3>
+            <div name="card_details" className="m-5 flex-col content-start"  key={"cd_"+cardInfo.id}>
+
+                <div name="card-header-container" className=" h-5">
+                    <ManaCost manaCostURIs={manaCostURIs} />
+                </div>
+                <div className="text-center font-semibold  ">{cardInfo.name}</div>
                 <div name="card_images" className="flex justify-center">
                     { cardImages.map( ci => <img key={"card_face_"+ i++} src={ci} alt={cardInfo.name}/>)}
                 </div>
@@ -49,4 +60,19 @@ function Card({cardInfo}){
             </div>
         </div>
     );
+}
+
+function ManaCost({manaCostURIs}){
+    try{
+        return(
+            <div name="mana-cost-container" className="flex h-full justify-end">
+                {  manaCostURIs.map(uri =>{ return(<img key="" className="w-auto h-auto" src={uri}/>)}) }
+            </div>
+        )
+
+    } catch (error) {
+        console.log("error en la uri para " + manaCostURIs)
+        return null;
+    }
+
 }
