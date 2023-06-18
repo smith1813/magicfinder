@@ -15,7 +15,6 @@ export default function App() {
   const [searchPlaceholder, setSearchPlaceholder] = useState(defaultSearchPlaceholder);
   const [sortSelectValue, setSortSelectValue] = useState(defaultSortSelectValue);
 
-
     function handleCardList(e){
           setCardList(e);
     }
