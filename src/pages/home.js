@@ -1,11 +1,12 @@
 import { useState } from "react";
 import React from "react";
-import SearchPage from "./searchPage"
-import ActionBar from "./actionsBar";
-import NavigationBar from "./navBar";
-import { sortCards } from "./utils";
+import SearchPage from "../searchPage"
+import ActionBar from "../actionsBar";
+import NavigationBar from "../navBar";
+import { sortCards } from "../utils";
 
-export default function App() {
+
+export default function Home() {
 
   const defaultCardlistState = null;
   const defaultSearchPlaceholder = "search card's name";
