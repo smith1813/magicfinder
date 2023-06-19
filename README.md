@@ -1,11 +1,12 @@
-# app_react
-MTG card selector from scryfall api
+# MTG react demo
 
-TO FIX: 
+MTG card selector from scryfall api, still adding features. Still learning how to use react
+
+## TO FIX: 
 - Fix UUID issue on manacost svg 
 - Fix the ugly CSS on the 404 page
 
-Next steps could be:
+## Proposed Work
 - More pages
     - Sets
     - Full cardinfo (with dynamic route)
