@@ -28,6 +28,9 @@ function SortSelect({handleSortSelectChange, sortSelectValue}){
                 <option value="descending-released_at">Release Date (descending)</option>
                 <option value="ascending-name">Name (ascending)</option>
                 <option value="descending-name">Name (descending)</option>
+                <option value="ascending-type_line">Type (ascending)</option>
+                <option value="descending-type_line">Type (descending)</option>
+
             </select>            
         </div>
     )
