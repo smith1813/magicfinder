@@ -39,15 +39,18 @@ export default function ErrorPage() {
                     
                     <div className="
                         m-0 mb-1 
-                        text-[2vw] 
+                        text-[2vw]
+                        xl:text-[1.5vw]   
                         " >Oops!</div>
                     <div className="  
-                        text-[1.5vw] ">
+                        text-[1.5vw]
+                        xl:text-[1.15vw]   ">
                         Sorry, an unexpected error has occurred. <br/>
                         Maybe you put the wrong URL?
                     </div>
                     <div className=" 
-                        text-[1.5vw]  
+                        text-[1.5vw]
+                        xl:text-[1.15vw]  
                         mb-1 mt-3 
                         border-slate-500 border-2 bg-slate-600 
                         hover:bg-slate-500 w-auto">
