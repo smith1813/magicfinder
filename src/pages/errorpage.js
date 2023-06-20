@@ -14,7 +14,7 @@ export default function ErrorPage() {
         
         <div name="error_container" 
             className="
-            relative pt-auto m-10 
+            relative pt-auto
             flex justify-center">
             
             <img name="error_image_container" 
@@ -39,17 +39,25 @@ export default function ErrorPage() {
                     
                     <div className="
                         m-0 mb-1 
-                        text-[2vw]
+                        text-[5vw]
+                        xs:text-[6vw]
+                        sm:text-[3vw]
+                        md:text-[2vw]
                         xl:text-[1.5vw]   
                         " >Oops!</div>
-                    <div className="  
-                        text-[1.5vw]
-                        xl:text-[1.15vw]   ">
+                    <div className=" 
+                        text-[2.15vw]
+                        xs:text-[2vw]
+                        sm:text-[1.5vw]
+                        md:text-[1.25]
+                        xl:text-[1.15vw]  ">
                         Sorry, an unexpected error has occurred. <br/>
                         Maybe you put the wrong URL?
                     </div>
                     <div className=" 
-                        text-[1.5vw]
+                        text-[2.5vw]
+                        sm:text-[2.15vw]
+                        md:text-[1.5]
                         xl:text-[1.15vw]  
                         mb-1 mt-3 
                         border-slate-500 border-2 bg-slate-600 
