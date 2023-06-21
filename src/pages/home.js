@@ -1,8 +1,8 @@
 import { useState } from "react";
 import React from "react";
-import SearchPage from "../searchPage"
-import ActionBar from "../actionsBar";
-import NavigationBar from "../navBar";
+import SearchArea from "../display/searchPage"
+import ActionBar from "../layout/actionsBar";
+import NavigationBar from "../layout/navBar";
 import { sortCards } from "../utils";
 
 
@@ -16,9 +16,6 @@ export default function Home() {
   const [searchPlaceholder, setSearchPlaceholder] = useState(defaultSearchPlaceholder);
   const [sortSelectValue, setSortSelectValue] = useState(defaultSortSelectValue);
 
-    function handleCardList(e){
-          setCardList(e);
-    }
 
     //todo: hacer funciones para llamadas mas expresivas a la API (buscador avanzado)
     function fetchAPI(e){
@@ -27,10 +24,20 @@ export default function Home() {
           .then( res =>  {
           return res.json()})
           .then(j => {
-            handleCardList(j.data)
+            //si viene un j.status === 404, hacer algo
+            if(j.status === 404){
+              console.log("llego un error 404 por la API");
+            } else {
+              handleCardList(j.data)
+            }
           }
             )
       .catch( error => alert(error));
+    }
+
+    // currently won't 
+    function handleCardList(e){
+      setCardList(e);
     }
 
     // cuando se hace una nueva llamada a la api, se resetea el estado del sort
@@ -54,11 +61,17 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <div name="all-container" className='bg-slate-400 h-20'>
+      <div name="nav-container" className='bg-slate-400'>
         <NavigationBar handleSubmit={handleSubmit} searchPlaceholder={searchPlaceholder}/>
-        <ActionBar handleSortSelectChange={handleSortSelectChange} sortSelectValue={sortSelectValue}/>
-        <SearchPage cardList={cardList}/>
       </div>
+      <div name="cation-bar-container">
+        <ActionBar handleSortSelectChange={handleSortSelectChange} sortSelectValue={sortSelectValue}/>
+      </div>
+      <div name="search-page-container "
+          className="bg-red h-screen ">
+        <SearchArea cardList={cardList}/>
+      </div>
+      
     </React.Fragment>
   );
 }

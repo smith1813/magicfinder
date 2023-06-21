@@ -5,16 +5,20 @@ import "./output.css"
 import Home from "./pages/home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ErrorPage from "./pages/errorpage";
+import Footer from "./layout/footer";
 
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-          <Route index element={<Home />} />
-          <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
+    <React.Fragment>
+      <BrowserRouter>
+        <Routes>
+            <Route index element={<Home />} />
+            <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
+    </React.Fragment>
+    
   );
 }
 
