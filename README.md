@@ -3,6 +3,7 @@
 MTG card selector from scryfall api, still adding features. Still learning how to use react
 
 ## TO FIX: 
+- Icon is broken
 
 ## Proposed Work
 - Implement lazy loading on card images
