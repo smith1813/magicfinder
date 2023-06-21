@@ -6,6 +6,7 @@ MTG card selector from scryfall api, still adding features. Still learning how t
 
 ## Proposed Work
 - Implement lazy loading on card images
+- Implement pagination for more than 50 results
 - Handle 404 on api searchs
 - Isolate the "header" and "footer" components
 - More pages
