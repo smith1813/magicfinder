@@ -38,7 +38,11 @@ function manaCostExtract(manaCost){
         const uris = arrayManaCostToURIs(parsedManaCost);
         return uris;
     } catch (error) {
-        console.log("Could not extract the mana cost");
+        console.log({
+          'error': "Could not extract the mana cost", 
+          'manaCost': manaCost,
+          'catch': error,
+         });
         return null;
     }
 }
