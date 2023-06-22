@@ -1,74 +1,85 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import React from "react";
 import SearchArea from "../display/searchArea"
 import ActionBar from "../layout/actionsBar";
-import NavigationBar from "../layout/navBar";
+import SearchBar from "../layout/navBar";
 import { sortCards } from "../utils";
 import { useParams, useSearchParams } from "react-router-dom";
 
 
 
 export default function SearchPage() {
+  //default constants
+  const defaultPlaceholder = "search card's name";
 
-  // Search params for the query!
-  //const [searchParams, setSearchParams] = useSearchParams();
-  //const searchQuery = searchParams.get('q');
-  
-  
+  // States and params
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [placeholder, setPlaceholder] = useState(defaultPlaceholder)
+  const searchQuery = searchParams.get('q');
+
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const q = e.target.search_query.value
+    setSearchParams({ 'q': q });
+    setPlaceholder(q);
+  }
+
+  console.log(searchParams);
+  console.log(searchQuery);
+
+
+  return (
+    <React.Fragment>
+      <SearchBar handleSubmit={handleSubmit} searchPlaceholder={placeholder} />
+      {searchQuery && <SearchResults searchQuery={searchQuery} />}
+    </React.Fragment>
+  );
+}
+
+function EmptySearchAlert({ suggestion }) {
+  return (
+    <div name="alert-container"
+      className="       
+      bg-red-300 text-red-950 
+      w-screen h-[2rem] p-1">
+      <div name="not-found-alert " > No cards found for your search, please try again</div>
+    </div>
+  )
+}
+
+// cant be via api i have to code it myself from the catalog
+//function getSuggestionQuery(query) {
+//  return ("Spore Frog");
+//}
+
+
+function SearchResults({ searchQuery }) {
+
+  if (!searchQuery) {
+    return null;
+  }
 
   const defaultCardlistState = null;
-  const defaultSearchPlaceholder = "search card's name";
   const defaultSortSelectValue = "ascending-name";
   const defaultEmptySearchAlert = false;
-  const defaultSugestedSearch = "spore frog";
 
   const [cardList, setCardList] = useState(defaultCardlistState);
   const [sortSelectValue, setSortSelectValue] = useState(defaultSortSelectValue);
   const [emptySearchAlert, setEmptySearchAlert] = useState(defaultEmptySearchAlert);
-  const [sugestedSearch, setSugestedSearch] = useState(defaultSugestedSearch);
+
+  // Call the api when the searchQuery changes
+  useEffect(() => {
+    fetch(encodeURI('https://api.scryfall.com/cards/search?q=' + searchQuery))
+    .then(res => res.json())
+    .then(j => {
+      handleCardList(j.data)})
+    .catch(error => alert(error))
+  },[searchQuery])
 
 
-  //TODO: Make more expresive api logic
-
-
-
-  // en cada llamada a la API, 
-  // entonces siempre se triggerea el setCardList porque se setea a objetos distintos 
-  // con el mismo valor, lo que hace que sean en efecto, distintas referencias
-  function fetchAPI(e) {
-
-    //On API consumption, reset the sort filter state and the placeholder state
-    setSortSelectValue(defaultSortSelectValue);
-    let q = e;
-    fetch(encodeURI('https://api.scryfall.com/cards/search?q=' + q))
-      .then(res => {
-        return res.json()
-      })
-      .then(j => {
-        //si viene un j.status === 404, hacer algo
-        if (j.status === 404) {
-          console.log("llego un error 404 por la API");
-          setEmptySearchAlert(true);
-          setCardList(null);
-        } else {
-          setEmptySearchAlert(false);
-          handleCardList(j.data)
-        }
-      }
-      )
-      .catch(error => alert(error));
-  }
-
-  //  maybe i can get rid of this
   function handleCardList(e) {
     setCardList(e);
-  }
-
-  //maybe submitting should just redirect to search?q={e.target.search_queue.value} ??
-  function handleSubmit(e) {
-    e.preventDefault();
-    const searchQueue = e.target.search_queue.value;
-    fetchAPI(searchQueue);
   }
 
   function handleSortSelectChange(e) {
@@ -81,44 +92,38 @@ export default function SearchPage() {
     setCardList(orderedCardList);
   }
 
-
-
-
   return (
     <React.Fragment>
-      <NavigationBar handleSubmit={handleSubmit} searchPlaceholder={defaultSearchPlaceholder} />
       {cardList && <ActionBar handleSortSelectChange={handleSortSelectChange} sortSelectValue={sortSelectValue} />}
       {emptySearchAlert && <EmptySearchAlert suggestion={sugestedSearch} />}
-      <SearchArea cardList={cardList} />
+      {cardList && <SearchArea cardList={cardList} />}
     </React.Fragment>
   );
 }
 
+//devuelve una promesa de que traerá los resultados de la API
 
-
-
-function EmptySearchAlert({ suggestion }) {
-
-  // Eventually this should be        
-  // <div> No cards found. Did you mean: {suggestion}? </div>
-
-  return (
-    <div name="alert-container"
-      className="       
-      bg-red-300 text-red-950 
-      w-screen h-[2rem] p-1">
-      <div name="not-found-alert " > No cards found for your search, please try again</div>
-    </div>
-
-  )
-}
-
-// cant be via api i have to code it myself from the catalog
-//function getSuggestionQuery(query) {
-//  return ("Spore Frog");
-//}
-
-
-function SearchResults(){
-  
-}
+/*
+function fetchAPIAux(e) {
+  console.log("llamada a fetch");
+  //On API consumption, reset the sort filter state and the placeholder state
+  setSortSelectValue(defaultSortSelectValue);
+  let q = e;
+  fetch(encodeURI('https://api.scryfall.com/cards/search?q=' + q))
+    .then(res => {
+      return res.json()
+    })
+    .then(j => {
+      //si viene un j.status === 404, hacer algo
+      if (j.status === 404) {
+        console.log("llego un error 404 por la API");
+        setEmptySearchAlert(true);
+        setCardList(null);
+      } else {
+        setEmptySearchAlert(false);
+        handleCardList(j.data)
+      }
+    }
+    )
+    .catch(error => alert(error));
+}*/
