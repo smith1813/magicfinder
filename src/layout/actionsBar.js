@@ -22,18 +22,16 @@ function SortSelect({handleSortSelectChange, sortSelectValue}){
             </div>
             <select name="sort-select" onChange={handleSortSelectChange} value={sortSelectValue}
                 className="bg-slate-300 hover:bg-slate-200 p-1 pl-1 rounded-lg" >
-                <option value="ascending-cmc">Converted Mana Cost (ascending)</option>
-                <option value="descending-cmc">Converted Mana Cost (descending)</option>            
-                <option value="ascending-released_at">Release Date (ascending)</option>
-                <option value="descending-released_at">Release Date (descending)</option>
-                <option value="ascending-name">Name (ascending)</option>
-                <option value="descending-name">Name (descending)</option>
-                <option value="ascending-type_line">Type (ascending)</option>
-                <option value="descending-type_line">Type (descending)</option>
-                <option value="ascending-set_name">Set (ascending)</option>
-                <option value="descending-set_name">Set (descending)</option>
-
-
+                <option value="ascending-cmc">Converted Mana Cost (asc)</option>
+                <option value="descending-cmc">Converted Mana Cost (desc)</option>            
+                <option value="ascending-released_at">Release Date (asc)</option>
+                <option value="descending-released_at">Release Date (desc)</option>
+                <option value="ascending-name">Name (asc)</option>
+                <option value="descending-name">Name (desc)</option>
+                <option value="ascending-type_line">Type (asc)</option>
+                <option value="descending-type_line">Type (desc)</option>
+                <option value="ascending-set_name">Set (asc)</option>
+                <option value="descending-set_name">Set (desc)</option>
             </select>            
         </div>
     )

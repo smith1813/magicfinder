@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import SearchArea from "../display/searchPage"
+import SearchArea from "../display/searchArea"
 import ActionBar from "../layout/actionsBar";
 import NavigationBar from "../layout/navBar";
 import { sortCards } from "../utils";
@@ -11,10 +11,14 @@ export default function Home() {
   const defaultCardlistState = null;
   const defaultSearchPlaceholder = "search card's name";
   const defaultSortSelectValue = "ascending-name";
+  const defaultEmptySearchAlert = false;
+  const defaultSugestedSearch ="spore frog";
 
   const [cardList, setCardList] = useState(defaultCardlistState);
   const [searchPlaceholder, setSearchPlaceholder] = useState(defaultSearchPlaceholder);
   const [sortSelectValue, setSortSelectValue] = useState(defaultSortSelectValue);
+  const [emptySearchAlert, setEmptySearchAlert] = useState(defaultEmptySearchAlert);
+  const [sugestedSearch, setSugestedSearch] = useState(defaultSugestedSearch);
 
 
     //todo: hacer funciones para llamadas mas expresivas a la API (buscador avanzado)
@@ -27,7 +31,11 @@ export default function Home() {
             //si viene un j.status === 404, hacer algo
             if(j.status === 404){
               console.log("llego un error 404 por la API");
+              setEmptySearchAlert(true);
+              setCardList(null);
+              const suggestion = getSuggestionQuery(q);
             } else {
+              setEmptySearchAlert(false);
               handleCardList(j.data)
             }
           }
@@ -61,17 +69,32 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <div name="nav-container" className='bg-slate-400'>
-        <NavigationBar handleSubmit={handleSubmit} searchPlaceholder={searchPlaceholder}/>
-      </div>
-      <div name="cation-bar-container">
-        <ActionBar handleSortSelectChange={handleSortSelectChange} sortSelectValue={sortSelectValue}/>
-      </div>
-      <div name="search-page-container "
-          className="bg-red h-screen ">
-        <SearchArea cardList={cardList}/>
-      </div>
-      
+      <NavigationBar handleSubmit={handleSubmit} searchPlaceholder={searchPlaceholder}/>
+      {cardList && <ActionBar handleSortSelectChange={handleSortSelectChange} sortSelectValue={sortSelectValue}/>}
+      {emptySearchAlert && <EmptySearchAlert suggestion = {sugestedSearch}/>}
+      <SearchArea cardList={cardList}/>
     </React.Fragment>
   );
+}
+
+
+function EmptySearchAlert({suggestion}){
+
+  // Eventually this should be        
+  // <div> No cards found. Did you mean: {suggestion}? </div>
+
+  return(
+    <div name="alert-container" 
+      className="       
+      bg-red-300 text-red-950 
+      w-screen h-[2rem] p-1">
+      <div name="not-found-alert " > No cards found for your search, please try again</div>
+    </div>
+    
+  )
+}
+
+// cant be via api
+function getSuggestionQuery(query){
+  return ("Spore Frog");
 }

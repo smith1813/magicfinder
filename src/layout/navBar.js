@@ -1,7 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function NavigationBar({handleSubmit, searchPlaceholder}){
     return (
+    <React.Fragment>
+        
         <div className="relative flex bg-slate-800 justify-center items-center py-8"> 
             <div name="nav-logo" className="
                 absolute
@@ -21,6 +24,8 @@ export default function NavigationBar({handleSubmit, searchPlaceholder}){
                     <button className="bg-slate-900  hover:bg-blue-400 border-1  border-slate-400 rounded-xl rounded-l-none p-1 px-3 text-slate-300 text-center" type="submit">Search</button>
                 </form>
             </div>
-        </div>
+        </div>    
+    </React.Fragment>
+        
     );
 }
