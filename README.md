@@ -4,6 +4,7 @@ MTG card selector from scryfall api, still adding features. Still learning how t
 
 ## TO FIX: 
 - Icon is broken
+- searchParams is triggering infinite renders, i have to separate states and display a "searchResultArea" or something like that
 
 ## Proposed Work
 
