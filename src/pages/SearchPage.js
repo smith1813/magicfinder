@@ -32,12 +32,12 @@ export default function SearchPage() {
   return (
     <React.Fragment>
       <SearchBar handleSubmit={handleSubmit} searchPlaceholder={placeholder} />
-      {searchQuery && <SearchResults searchQuery={searchQuery} />}
+      <SearchResults searchQuery={searchQuery} />
     </React.Fragment>
   );
 }
 
-function EmptySearchAlert({ suggestion }) {
+function EmptySearchAlert() {
   return (
     <div name="alert-container"
       className="       
@@ -59,7 +59,6 @@ function SearchResults({ searchQuery }) {
   if (!searchQuery) {
     return null;
   }
-
   const defaultCardlistState = null;
   const defaultSortSelectValue = "ascending-name";
   const defaultEmptySearchAlert = false;
@@ -68,17 +67,24 @@ function SearchResults({ searchQuery }) {
   const [sortSelectValue, setSortSelectValue] = useState(defaultSortSelectValue);
   const [emptySearchAlert, setEmptySearchAlert] = useState(defaultEmptySearchAlert);
 
+
   // Call the api when the searchQuery changes
   useEffect(() => {
     fetch(encodeURI('https://api.scryfall.com/cards/search?q=' + searchQuery))
     .then(res => res.json())
     .then(j => {
-      handleCardList(j.data)})
+      if(j.status === 404){
+        setEmptySearchAlert(true);
+        setCardList(null);
+      }else {
+        handleCardList(j.data)}
+      })
     .catch(error => alert(error))
   },[searchQuery])
 
 
   function handleCardList(e) {
+    setEmptySearchAlert(false);
     setCardList(e);
   }
 
@@ -95,8 +101,8 @@ function SearchResults({ searchQuery }) {
   return (
     <React.Fragment>
       {cardList && <ActionBar handleSortSelectChange={handleSortSelectChange} sortSelectValue={sortSelectValue} />}
-      {emptySearchAlert && <EmptySearchAlert suggestion={sugestedSearch} />}
-      {cardList && <SearchArea cardList={cardList} />}
+      {emptySearchAlert && <EmptySearchAlert />}
+      {<SearchArea cardList={cardList} />}
     </React.Fragment>
   );
 }
