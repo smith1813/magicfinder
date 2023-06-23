@@ -4,13 +4,13 @@ export default function LandingPage() {
 
     return (
         <React.Fragment>
-            <div name="landingpage-container"
+            <div name="landingpage-background"
                 className="flex w-full h-screen bg-slate-800 justify-center flex-col">
 
-                <div className>
-                    <div className="w-full flex justify-center text-slate-200" >
-                        <div className="mb-10 text-2xl font-semibold text-center" >
-                            Please, search a card name
+                <div name="instructions-wrapper" className="mb-[25%]">
+                    <div className="w-full flex flex-col justify-center text-slate-200" >
+                        <div className="mb-10  m-auto px-10 text-center text-2xl   " >
+                            <p>Please, search for a <strong className="whitespace-nowrap">Magic: the Gathering</strong>  card name</p>
                         </div>
                     </div>
                     <form  action="/search" name="search-form" className="m-auto flex flex-row w-2/3"  >

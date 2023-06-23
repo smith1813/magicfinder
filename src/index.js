@@ -42,7 +42,7 @@ function NavLinkBar(){
   }
   return(
       <nav className="bg-slate-800 text-slate-200">
-          <NavLink style={navLinkStyles} to="/">Search</NavLink>
+          <NavLink style={navLinkStyles} to="/">Home</NavLink>
           <NavLink style={navLinkStyles} to="/setlist">Setlist</NavLink>
       </nav>            
   )

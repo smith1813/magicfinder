@@ -11,3 +11,7 @@
 body {
   background-color: rgb(226 232 240);
 }
+
+strong {
+  font-weight: 900;
+}
