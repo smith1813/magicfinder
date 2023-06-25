@@ -81,16 +81,16 @@ function CardSingleFaced({ uri }) {
 function CardDoubleFaced({ cardInfo }) {
 
 
-    //no funciona si no hay click, poner cada carta dentro de un div porque no acepta la clase el componente
-    const front = document.getElementById('front')
-    const back = document.getElementById('back')
     function handleClick() {
         try {
+            const front = document.getElementById('front')
+            const back = document.getElementById('back')
             front.classList.toggle('flipped')
             back.classList.toggle('flipped')
-        } catch {
+        } catch (error) {
             console.log('error al flipear carta');
             console.log(cardInfo);
+            console.log(error);
         }
     }
 
