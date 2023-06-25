@@ -34,8 +34,9 @@ export default function CardDetails() {
 
 function CardDetailsLayout({ cardInfo }) {
 
+    // here it stops the fli-card nonsense 
     return (
-        <div name="card-layout-container" className="h-screen w-screen">
+        <div name="card-details-container" className="h-screen w-screen flex flex-col justify-center p-5">
 
             <div name="card-container" className="card-container">
                 <CardLayout cardInfo={cardInfo} />
@@ -83,16 +84,13 @@ function CardDoubleFaced({ cardInfo }) {
     //no funciona si no hay click, poner cada carta dentro de un div porque no acepta la clase el componente
     const front = document.getElementById('front')
     const back = document.getElementById('back')
-
-    console.log(front, back);
-    console.log(cardInfo);
     function handleClick() {
-        try{
+        try {
             front.classList.toggle('flipped')
-            back.classList.toggle('flipped')    
-        }catch{
+            back.classList.toggle('flipped')
+        } catch {
             console.log('error al flipear carta');
-            console.log(car);
+            console.log(cardInfo);
         }
     }
 
@@ -105,10 +103,10 @@ function CardDoubleFaced({ cardInfo }) {
             <React.Fragment>
                 <div className="double-card-container">
                     <div className="dual-faced-card">
-                        <div id="front" onClick={handleClick} className="cardFront"><CardImage uri={uri_front} /></div>
-                        <div id="back" onClick={handleClick }className="cardBack"><CardImage uri={uri_back} /></div>
+                        <img className="flip-button" onClick={handleClick} src={require('../images/flip-icon.png')}></img>
+                        <div id="front" className="cardFront"><CardImage uri={uri_front} /></div>
+                        <div id="back" className="cardBack"><CardImage uri={uri_back} /></div>
                     </div>
-                    <img className="flip-button" onClick={handleClick} src={require('../images/flip-icon.png')}></img>
                 </div>
             </React.Fragment>
 
