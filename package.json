@@ -12,7 +12,7 @@
     "uglifyjs-webpack-plugin": "^2.2.0"
   },
   "name": "tefyif",
-  "description": null,
+  "description": "null",
   "version": "0.0.0",
   "scripts": {
     "start": "react-scripts start",
