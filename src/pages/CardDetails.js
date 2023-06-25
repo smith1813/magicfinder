@@ -98,7 +98,6 @@ function CardDoubleFaced({ cardInfo }) {
         const uri_front = cardInfo.card_faces[0].image_uris.normal;
         const uri_back = cardInfo.card_faces[1].image_uris.normal;
 
-        //this should be PURE (yo asshole)
         return (
             <React.Fragment>
                 <div className="double-card-container">
