@@ -67,7 +67,7 @@ strong {
   background-color: RGB(150,150,150);
   opacity: 75%;
   height: 15%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   margin: 10px;
   border-radius: 50%;
   padding: 10px;
