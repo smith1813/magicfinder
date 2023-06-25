@@ -80,11 +80,13 @@ function CardSingleFaced({ uri }) {
 
 function CardDoubleFaced({ cardInfo }) {
 
-
+    //id should be unique though
+    const frontFaceId = cardInfo.id+"-front"; 
+    const backFaceId = cardInfo.id+"-back";
     function handleClick() {
         try {
-            const front = document.getElementById('front')
-            const back = document.getElementById('back')
+            const front = document.getElementById(frontFaceId)
+            const back = document.getElementById(backFaceId)
             front.classList.toggle('flipped')
             back.classList.toggle('flipped')
         } catch (error) {
@@ -103,8 +105,8 @@ function CardDoubleFaced({ cardInfo }) {
                 <div className="double-card-container">
                     <div className="dual-faced-card">
                         <img className="flip-button" onClick={handleClick} src={require('../images/flip-icon.png')}></img>
-                        <div id="front" className="cardFront"><CardImage uri={uri_front} /></div>
-                        <div id="back" className="cardBack"><CardImage uri={uri_back} /></div>
+                        <div id={frontFaceId} className="cardFront"><CardImage uri={uri_front} /></div>
+                        <div id={backFaceId} className="cardBack"><CardImage uri={uri_back} /></div>
                     </div>
                 </div>
             </React.Fragment>
