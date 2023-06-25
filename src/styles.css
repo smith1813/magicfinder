@@ -15,3 +15,75 @@ body {
 strong {
   font-weight: 900;
 }
+
+.card-container{
+ 
+ width:100%;
+ height:100%;
+}
+
+.single-card-container,
+.double-card-container {
+  width:100%;
+  height:100%;
+  margin:auto;
+}
+
+.card-image{
+  height:100%;
+  widht: auto;
+  object-fit: scale-down;
+  margin: auto;
+}
+
+.dual-faced-card{
+  width: 100%;
+  height:100%;
+  position: relative;
+  display:flex;
+  position: relative;
+}
+
+
+.cardFront,
+.cardBack {
+  heigh:100%;
+  width:100%;
+  margin:auto;
+  //background-color: antiquewhite;
+  margin: 0px;
+  transition: transform 0.3s ease-in;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-button{
+  background-color: RGB(150,150,150);
+  opacity: 75%;
+  height: 15%;
+  aspect-ratio: 1/1;
+  margin: 10px;
+  border-radius: 50%;
+  padding: 10px;
+  min-height: 80px;
+  position: absolute;
+  top:30%;
+  left:50%;
+
+}
+
+.cardBack {
+  transform: perspective(10000px) rotateY(180deg) translateX(50%) ; 
+}
+
+.cardBack.flipped {
+  transform: perspective(10000px) rotateY(0deg) translateX(-50%);
+}
+
+.cardFront {
+  transform: perspective(10000px) rotateY(0deg) translateX(50%);
+}
+
+.cardFront.flipped {
+  transform: perspective(10000px) rotateY(-180deg) translateX(-50%);
+}

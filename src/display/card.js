@@ -1,8 +1,12 @@
 import React from "react";
 import { parseManaCost } from "../utils";
 import { ReactSVG } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 
 export default function Card({cardInfo}){
+
+    //by clicking on the card you can go to the card details page
+    const navigate = useNavigate();
 
     // pueden existir cartas de doble cara, esas no traen img_uri,
     // en vez de eso tienen un objeto llamada "card_faces", que trae las URIs adentro
@@ -36,9 +40,10 @@ export default function Card({cardInfo}){
                 transform transition duration-200 hover:scale-110 
                 bg-slate-100 border-black 
                 rounded-xl border-1 m-2 shadow-sm shadow-black
-                max-w-md max-h-[18rem]
-                
-                ">
+                max-w-md max-h-[18rem]"
+            onClick={ () => navigate('/card/'+cardInfo.id)}
+                >
+            
             <div 
                 name="card_details" 
                 className=" m-2 "  
