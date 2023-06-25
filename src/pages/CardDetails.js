@@ -114,15 +114,3 @@ function CardDoubleFaced({ cardInfo }) {
     return (<CardImage uri={null} />)
 
 }
-
-
-/*<button
-id="flip-button"
-className="
-p-2 h-10 w-1/5 min-w-[80px] 
-hover:bg-blue-400 bg-blue-800 text-slate-200 rounded-xl
-absolute
-top-1/3 left-1/2
-"
-onClick={handleClick}>Flip!
-</button>*/

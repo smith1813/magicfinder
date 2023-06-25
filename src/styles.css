@@ -79,11 +79,11 @@ strong {
 }
 
 .cardBack {
-  transform: perspective(10000px) rotateY(180deg) ; 
+  transform: perspective(10000px) rotateY(180deg); 
 }
 
 .cardBack.flipped {
-  transform: perspective(10000px) rotateY(0deg) ;
+  transform: perspective(10000px) rotateY(0deg);
 }
 
 .cardFront {
@@ -91,5 +91,5 @@ strong {
 }
 
 .cardFront.flipped {
-  transform: perspective(10000px) rotateY(-180deg) ;
+  transform: perspective(10000px) rotateY(-180deg);
 }
