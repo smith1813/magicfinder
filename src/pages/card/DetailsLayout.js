@@ -31,7 +31,9 @@ function CardText({ cardInfo }) {
     if (!cardInfo) return null;
     let oracleText = [];
     if (cardInfo.card_faces) {
-        cardInfo.card_faces.map(face => oracleText.push(face.oracle_text))
+        cardInfo.card_faces.map(face => {
+            if(face.oracle_text) oracleText.push(face.oracle_text)
+            })
     } else {
         oracleText.push(cardInfo.oracle_text)
     }
