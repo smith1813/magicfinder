@@ -1,4 +1,4 @@
-import { symbolData } from "./resources/symbology";
+import { symbolData } from "../resources/symbology";
 
 export function sortCards( cardList , propertyName , order = 'ascending' ){
     const sortedArr = cardList.sort((a, b) => {

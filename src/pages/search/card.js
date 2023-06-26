@@ -1,5 +1,5 @@
 import React from "react";
-import { parseManaCost } from "../utils";
+import { parseManaCost } from "../../lib/utils";
 import { ReactSVG } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 

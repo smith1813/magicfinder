@@ -2,12 +2,24 @@ import React from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import SearchBar from "../../site-global-component/SearchBar"
+import { useNavigate } from "react-router-dom";
 
 export default function CardDetails() {
 
     const params = useParams();
     const cardId = params.cardId;
+    const placeholder = "Search card's name";
     const [cardInfo, setCardInfo] = useState(null);
+    const navigate = useNavigate();
+
+    
+    function handleSubmit(e){
+        e.preventDefault();
+        const search_query = e.target.search_query.value;
+        navigate('/search?q='+search_query)
+    }
+
 
     // Call the api when the searchQuery changes
     useEffect(() => {
@@ -27,6 +39,7 @@ export default function CardDetails() {
 
     return (
         <React.Fragment>
+            <SearchBar handleSubmit={handleSubmit} searchPlaceholder={placeholder} />
             {cardInfo && <CardDetailsLayout cardInfo={cardInfo} />}
         </React.Fragment>
     )
@@ -36,13 +49,16 @@ function CardDetailsLayout({ cardInfo }) {
 
     // here it stops the fli-card nonsense 
     return (
-        <div name="card-details-container" className="h-screen w-screen flex flex-col justify-center p-5">
+        <React.Fragment>
+            <div name="card-details-container" className="h-screen w-screen flex flex-col justify-center p-5">
 
-            <div name="card-container" className="card-container">
-                <CardLayout cardInfo={cardInfo} />
+                <div name="card-container" className="card-container">
+                    <CardLayout cardInfo={cardInfo} />
+                </div>
+
             </div>
+        </React.Fragment>
 
-        </div>
     )
 }
 
@@ -65,7 +81,7 @@ function CardImage({ uri }) {
     if (uri) {
         return (<img className="card-image" src={uri} />)
     }
-    return (<img className="card-image" src={require('../images/empty.png')} />)
+    return (<img className="card-image" src={require('../../images/empty.png')} />)
 
 }
 
@@ -81,8 +97,8 @@ function CardSingleFaced({ uri }) {
 function CardDoubleFaced({ cardInfo }) {
 
     //id should be unique though
-    const frontFaceId = cardInfo.id+"-front"; 
-    const backFaceId = cardInfo.id+"-back";
+    const frontFaceId = cardInfo.id + "-front";
+    const backFaceId = cardInfo.id + "-back";
     function handleClick() {
         try {
             const front = document.getElementById(frontFaceId)
@@ -104,7 +120,7 @@ function CardDoubleFaced({ cardInfo }) {
             <React.Fragment>
                 <div className="double-card-container">
                     <div className="dual-faced-card">
-                        <img className="flip-button" onClick={handleClick} src={require('../images/flip-icon.png')}></img>
+                        <img className="flip-button" onClick={handleClick} src={require('../../images/flip-icon.png')}></img>
                         <div id={frontFaceId} className="cardFront"><CardImage uri={uri_front} /></div>
                         <div id={backFaceId} className="cardBack"><CardImage uri={uri_back} /></div>
                     </div>

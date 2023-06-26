@@ -2,12 +2,12 @@ import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 import "./output.css"
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./pages/search/SearchPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ErrorPage from "./pages/ErrorPage";
-import Setlist from "./pages/SetList";
-import LandingPage from "./pages/LandingPage"
-import CardDetails from "./pages/CardDetails";
+import ErrorPage from "./pages/error404/ErrorPage";
+import Setlist from "./pages/sets/SetList";
+import LandingPage from "./pages/home/LandingPage"
+import CardDetails from "./pages/card/CardDetails";
 import { NavLink } from "react-router-dom"
 
 
@@ -20,7 +20,7 @@ export default function App() {
         <Routes>
             <Route index element={<LandingPage />}/>
             <Route path="search"  element={<SearchPage />} />
-            <Route path="setlist" element={<Setlist />} />
+            <Route path="sets" element={<Setlist />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="card/:cardId" element={<CardDetails />}></Route>
         </Routes>
@@ -43,7 +43,7 @@ function NavLinkBar(){
   return(
       <nav className="bg-slate-800 text-slate-200">
           <NavLink style={navLinkStyles} to="/">Home</NavLink>
-          <NavLink style={navLinkStyles} to="/setlist">Setlist</NavLink>
+          <NavLink style={navLinkStyles} to="/sets">Setlist</NavLink>
       </nav>            
   )
 }

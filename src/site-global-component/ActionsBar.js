@@ -5,7 +5,7 @@ import React from "react";
 
 
 
-export default function ActionBar({actionBarState, handleSortSelectChange,sortSelectValue}){
+export default function ActionBar({handleSortSelectChange, sortSelectValue}){
 
     return(
         <div name="action-bar-container" className="bg-slate-400 p-2 flex justify-left">

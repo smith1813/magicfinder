@@ -1,16 +1,16 @@
 import { useState, useEffect} from "react";
 import React from "react";
-import SearchArea from "../display/searchArea"
-import ActionBar from "../layout/actionsBar";
-import SearchBar from "../layout/navBar";
-import { sortCards } from "../utils";
+import SearchArea from "./searchArea"
+import ActionBar from "../../site-global-component/ActionsBar";
+import SearchBar from "../../site-global-component/SearchBar";
+import { sortCards } from "../../lib/utils";
 import { useParams, useSearchParams } from "react-router-dom";
 
 
 
 export default function SearchPage() {
   //default constants
-  const defaultPlaceholder = "search card's name";
+  const defaultPlaceholder = "Search card's name";
 
   // States and params
   const [searchParams, setSearchParams] = useSearchParams();

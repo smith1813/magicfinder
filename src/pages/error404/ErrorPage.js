@@ -18,7 +18,7 @@ export default function ErrorPage() {
             flex justify-center">
             
             <img name="error_image_container" 
-                className="self-center" src={require('../images/error404.jpg')} />
+                className="self-center" src={require('../../images/error404.jpg')} />
             
             <div name="error_mesage_container" 
                 className=" 

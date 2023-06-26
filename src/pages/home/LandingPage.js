@@ -27,7 +27,7 @@ export default function LandingPage() {
                         rounded-xl rounded-l-none p-1 px-3 text-slate-300 text-center object
                         h-14 w-20"
                             type="submit">
-                            <img className="max-w-12 max-h-12 " src={require('../images/SearchLogo.png')}></img>
+                            <img className="max-w-12 max-h-12 " src={require('../../images/SearchLogo.png')}></img>
                         </button>
                     </form>
 

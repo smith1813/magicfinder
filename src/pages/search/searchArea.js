@@ -1,7 +1,21 @@
-import React from "react"
+import React from "react";
+import { CardList } from "./cardList";
+
+
+
+// if there is no cardlist, it should show an emptySearch page
+export default function  SearchArea({cardList}){
+    return (
+        <React.Fragment>
+            <div name="seach-area-container" className="bg-slate-200 h-screen w-screen">
+                {cardList ? <CardList cardList={cardList}/> : <EmptySearchArea/> }
+            </div>  
+        </React.Fragment>
+    )
+}
 
 // if there is no cardlist, it should show a no results page
-export default function  EmptySearchArea(){
+function  EmptySearchArea(){
     return (
         <React.Fragment>
             <div name="empty-seach-container" 
@@ -19,5 +33,3 @@ export default function  EmptySearchArea(){
     )
 }
 
-
-//<img src={require('../images/search404.jpg')} className=" rounded-md w-screen  h-auto opacity-50  object-fill"/>
