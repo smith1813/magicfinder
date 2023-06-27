@@ -48,12 +48,6 @@ function EmptySearchAlert() {
   )
 }
 
-// cant be via api i have to code it myself from the catalog
-//function getSuggestionQuery(query) {
-//  return ("Spore Frog");
-//}
-
-
 function SearchResults({ searchQuery }) {
 
   if (!searchQuery) {

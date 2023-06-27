@@ -32,17 +32,15 @@ function CardText({ cardInfo }) {
     let oracleText = [];
     if (cardInfo.card_faces) {
         cardInfo.card_faces.map(face => {
-            if(face.oracle_text) oracleText.push(face.oracle_text)
-            })
+            if (face.oracle_text) oracleText.push(face.oracle_text)
+        })
     } else {
         oracleText.push(cardInfo.oracle_text)
     }
-    console.log(oracleText);
-
     return (
         <div name="card-text" className="details-section">
             <ul>
-                {oracleText.map((faceText, index) => <li id={"rule_face_"+index} className="border-dashed border-b-4 last:border-0">{faceText}</li>)}
+                {oracleText.map((faceText, index) => <li key={"rule_face_" + index} className="border-dashed border-b-4 last:border-0">{faceText}</li>)}
             </ul>
         </div>
     )
@@ -57,7 +55,7 @@ function Legalities({ legalities }) {
     if (!legalities) return null;
     const entries = Object.entries(legalities);
 
-    const twCommon = "h-full p-2 rounded-xl mr-auto text-xs w-[100px] text-center font-bold  text-white"
+    const twCommon = "h-full py-2 rounded-md mx-0 my-1 text-xs min-w-[120px] text-center font-bold  text-white"
     const twLegalities = {
         'not_legal': 'bg-slate-400 text-slate-200' + twCommon,
         'banned': 'bg-red-400 text-red-800' + twCommon,
@@ -66,14 +64,17 @@ function Legalities({ legalities }) {
     }
     return (
         <div name="card-legalities" className="details-section-end">
-            <ul className="grid grid-cols-4 gap-y-1 gap-x-1 text-left bg-blu ">
-                {entries.map(l =>
-                    <React.Fragment>
-                        <li className={twLegalities[l[1]]}>{l[1].replace('_', ' ').toUpperCase()}</li>
-                        <li className="mr-auto font-bold text-sm">{l[0]}</li>
-                    </React.Fragment>
-
+            <div name="" className="m-2 
+            grid grid-flow-row sm:grid-cols-2 
+            grid-cols-1 
+            ">
+                {entries.map((l, index) =>
+                        <div key={"legality-"+index} className=" flex flex-nowrap mr-[2px]">
+                            <div className={twLegalities[l[1]]}>{l[1].replace('_', ' ').toUpperCase()}</div>
+                            <div className="ml-1 font-bold pt-[0.33rem] ">{l[0]}</div>
+                        </div>
                 )}
-            </ul>
+            </div>
+
         </div>)
 }

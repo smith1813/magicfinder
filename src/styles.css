@@ -57,8 +57,8 @@ strong {
 
 
 .flip-button{
-  background-color: RGB(150,150,150);
-  opacity: 75%;
+  background-color: RGB(150,150,150) ;
+  opacity: 50%;
   height: 15%;
   aspect-ratio: 1 / 1;
   margin: 10px;
@@ -67,7 +67,7 @@ strong {
   min-height: 80px;
   position: absolute;
   top:30%;
-  left:50%;
+  left:60%;
   z-index: 999; 
 }
 
@@ -113,7 +113,10 @@ strong {
   background: GhostWhite;
   border-style: solid;
   border-width: 3px;
-  border-color: black;
+  border-color: rgb(30 41 59);
+  border-radius:5px;
+  margin: 4px;
+
 }
 
 .details-section, .details-section-end{
@@ -130,3 +133,5 @@ strong {
   border-width: 1px;
   border-color: black;
 }
+
+

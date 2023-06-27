@@ -57,7 +57,7 @@ function CardDoubleFaced({ cardInfo }) {
             <React.Fragment>
                 <div className="double-card-container">
                     <div className="dual-faced-card">
-                        <img className="flip-button" onClick={handleClick} src={require('../../images/flip-icon.png')}></img>
+                        <img className="flip-button hover:bg-slate-50" onClick={handleClick} src={require('../../images/flip-icon.png')}></img>
                         <div id={frontFaceId} className="cardFront"><CardImage uri={uri_front} /></div>
                         <div id={backFaceId} className="cardBack"><CardImage uri={uri_back} /></div>
                     </div>
