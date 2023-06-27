@@ -38,8 +38,8 @@ export default function LandingPage() {
                         <div className="mb-1  m-auto px-10 text-center text-2xl   " >
                             <p>Please, search for a <strong className="whitespace-nowrap">Magic: the Gathering</strong>  card name</p>
                         </div>
-                        <div className="mb-10  m-auto px-10 text-center text-m   " >
-                            <p>(You can try some names like "Lotus", "Warrior", "Demon" or "Frog" if you are out of ideas)</p>
+                        <div className="mb-10  m-auto px-10 text-center text-sm   " >
+                            <p>(You can try names like "Lotus", "Elf", "Demon" or "Frog" if you are out of ideas)</p>
                         </div>
                     </div>
                     <form action="/search" name="search-form" className="m-auto flex flex-row w-2/3"  >
@@ -59,8 +59,8 @@ export default function LandingPage() {
                             <img className="max-w-12 max-h-12 " src={require('../../images/SearchLogo.png')}></img>
                         </button>
                     </form>
-                    <div name="random-button" className="flex flex-col justify-center mt-5">
-                        <button onClick={handleRandomClick} className=" text-slate-200 hover:bg-slate-600 m-auto p-4 bg-slate-900 border-slate-600 border-2 font-semibold ">Try a random card!</button>
+                    <div name="random-button" className="flex flex-col justify-center mt-20">
+                        <button onClick={handleRandomClick} className=" text-slate-200 hover:bg-slate-600 m-auto p-4 bg-slate-900 border-slate-600 border-2 font-semibold ">Or, try a random card!</button>
                     </div>
                 </div>
             </div>

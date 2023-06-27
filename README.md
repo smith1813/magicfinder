@@ -1,10 +1,8 @@
 # MTG react demo
 
-MTG card selector from scryfall api, still adding features. Still learning how to use react
-
+Small MTG card search engine using scryfall api. A week long project for learning React.js and tailwindCSS 
 ## TO FIX:
 - Size disparity between single faced card and double faced card on print (flex max height issues probably)
-- Size of legalties works shabby, fix it
 ## Proposed Work
 
 - Implement lazy loading on card images, it looks laggy on long results
