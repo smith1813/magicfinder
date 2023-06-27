@@ -1,6 +1,8 @@
-# MTG react demo
+# MagicFinder
 
 Small MTG card search engine using scryfall api. A week long project for learning React.js and tailwindCSS 
+
+I will set this project on hold since i'm learning new frameworks at the moment.
 ## TO FIX:
 - Size disparity between single faced card and double faced card on print (flex max height issues probably)
 ## Proposed Work
